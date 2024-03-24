@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="icon" href="/img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/src/index.css">
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to ExploreCity</h1>
+        <nav>
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="./src/explore.html">Explore Tours</a></li>
+                <li><a href="./src/aboutus.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="banner">
+        <div class="banner-content">
+            <h1>Explore Your City</h1>
+            <p class="para">Discover hidden gems, historical landmarks, and exciting tours.</p>
+            <a href="./src/explore.html" class="button">Explore Tours</a>
+        </div>
+    </section>
+
+
+    <div class="slideshow">
+        <section>
+            <h2><center>Featured tours</center></h2>
+        </section>
+
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img src="/img/banner1.jpeg" style="width:100%">
+                <div class="text">The Taj Mahal</div>
+            </div>
+
+            <div class="mySlides fade">
+                <img src="/img/banner2.jpg" style="width:100%">
+                <div class="text">Red Fort</div>
+            </div>
+
+            <div class="mySlides fade">
+                <img src="/img/banner3.jpg" style="width:100%">
+                <div class="text">The Taj</div>
+            </div>
+
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+
+        <br>
+
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <!-- Add more dots for additional slides -->
+        </div>
+    </div>
+
+
+    <footer>
+        <p>&copy; 2024 ExploreCity. All rights reserved.</p>
+    </footer>
+    <script src="/src/index.js"></script>
+    <script src="/src/sliding.js"></script>
+
+
+</body>
+
+</html>

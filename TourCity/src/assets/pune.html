@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Explore Pune</title>
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <link rel="stylesheet" href="/src/index.css">
+    <link rel="icon" href="/img/favicon.png" type="image/x-icon">
+    <style>
+        /* Define the map container's size */
+        #map {
+            width: 50%;
+            height: 500px;
+            margin-left: 4em;
+        }
+        .box{
+            display: flex;
+            margin: 18px;
+        }
+        .info{
+            /* margin: 18px; */
+            width: 50%;
+            height: 80vh;
+        }
+        .map{
+            /* margin: 28px auto; */
+            /* padding: 0 0 20px 0 ; */
+            box-shadow: brown;
+        }
+        .heading{
+            padding: 5px;
+            background-color: rgb(175, 171, 171);
+        }
+    </style>
+
+    
+</head>
+<body>
+    <header>
+        <h1 >Welcome to ExploreCity</h1>
+        <nav>
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/src/explore.html">Explore Tours</a></li>
+                <li><a href="/src/aboutus.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="slideshow-container">
+        <h1><center>The Taj Mahal</center></h1>
+        <div class="mySlides fade">
+            <img src="/img/sub-img/pune01.webp" style="width:100%">
+            <!-- <div class="text">The Taj Mahal</div> -->
+        </div>
+        
+        <div class="mySlides fade">
+            <img src="/img/sub-img/pune02.avif" style="width:100%">
+            <!-- <div class="text">Red Fort</div> -->
+        </div>
+        
+        <div class="mySlides fade">
+            <img src="/img/sub-img/pune03.jpg" style="width:100%">
+            <!-- <div class="text">The Taj</div> -->
+        </div>
+        
+
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <br>
+
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <!-- Add more dots for additional slides -->
+    </div>
+    <div class="box">
+        <div class="info">
+            <h3 class="heading">History of Pune</h3>
+            <p>Established as a settlement in ancient times, known as Punya-Vishaya.
+                Capital of the Maratha Empire under Shivaji Maharaj in the 17th century.
+                Center of the Peshwa rule during the 18th century.
+                Site of the Battle of Khadki and the Third Anglo-Maratha War.
+                Flourishing educational and cultural hub in contemporary India.
+                
+                </p>
+        </div>
+        <div id="map">
+            <h3 class="heading">Follow through Map</h3>
+
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 ExploreCity. All rights reserved.</p>
+    </footer>
+    <!-- Map container -->
+    
+    <script src="/src/sliding.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-clustering.js"></script>
+    <script>
+        // Initialize communication with the platform
+        const platform = new H.service.Platform({
+            apikey: 'lyoU-AMrYY_Rqji6KKrlOXg3jQ2SblSOD6NZBf-Vb_8'
+        });
+
+        // Default options for the base layers that are used to render a map
+        var defaultLayers = platform.createDefaultLayers();
+        
+        // Initialize the map
+        var map = new H.Map(document.getElementById('map'), 
+            defaultLayers.vector.normal.map, {
+                zoom: 10,
+                center: { lat:18.520430, lng:73.856743 } // Coordinates for Delhi, India
+            }
+        );
+
+        // add a resize listener to make sure that the map occupies the whole container
+        window.addEventListener('resize', () => map.getViewPort().resize());
+
+        // MapEvents enables the event system
+        // Behavior implements default interactions for pan/zoom (also on mobile touch environments)
+        var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+
+        // Create the default UI components
+        var ui = H.ui.UI.createDefault(map, defaultLayers);
+
+        var group = new H.map.Group();
+        map.addObject(group);
+
+        group.addEventListener('tap', function (evt) {
+                    
+            var bubble = new H.ui.InfoBubble(evt.target.getGeometry(), {
+                content: evt.target.getData()
+            });
+            
+            ui.addBubble(bubble);
+        }, false);
+
+        var dehliMarker = new H.map.Marker({lat:18.520430, lng:73.856743
+});
+        dehliMarker.setData("<div><p>Namaskar</p></div>");
+        group.addObject(dehliMarker);
+
+
+        
+
+        //prepare a data set which you want to be a part of the cliuster
+        let dataPoints = [
+            new H.clustering.DataPoint(48.18485, 16.31224),
+            new H.clustering.DataPoint(48.20871, 16.37265),
+            new H.clustering.DataPoint(48.20681, 16.36683)
+        ]
+
+        //create a data provider
+        var clusteredDataProvider = new H.clustering.Provider(dataPoints);
+
+        // Create a layer that includes the data provider and its data points: 
+        var layer = new H.map.layer.ObjectLayer(clusteredDataProvider);
+
+        // Add the layer to the map:
+        map.addLayer(layer);
+
+    </script>
+</body>
+</html>

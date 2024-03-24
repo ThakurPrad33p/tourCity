@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Explore Agra</title>
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <link rel="stylesheet" href="/src/index.css">
+    <link rel="icon" href="/img/favicon.png" type="image/x-icon">
+    <style>
+        /* Define the map container's size */
+        #map {
+            width: 50%;
+            height: 500px;
+            margin-left: 4em;
+        }
+
+        .box {
+            display: flex;
+            margin: 18px;
+        }
+
+        .info {
+            /* margin: 18px; */
+            width: 50%;
+        }
+
+        .map {
+            /* margin: 28px auto; */
+            /* padding: 0 0 20px 0 ; */
+            box-shadow: brown;
+        }
+
+        .heading {
+            padding: 5px;
+            background-color: rgb(175, 171, 171);
+        }
+
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            /* background-color: #c7c0c0; */
+            margin: auto;
+        }
+
+        .mySlides {
+            display: none;
+        }
+
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active,
+        .dot:hover {
+            background-color: #717171;
+        }
+
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: .4
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+        h1{
+            padding-top: 10px;
+            padding-left: 10px;
+        }
+
+    </style>
+
+
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to ExploreCity</h1>
+        <nav>
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/src/explore.html">Explore Tours</a></li>
+                <li><a href="/src/aboutus.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="slideshow-container">
+        <h1><center>The Taj Mahal</center></h1>
+        <div class="mySlides fade">
+            <img src="/img/sub-img/agra01.jpg" style="width:100%">
+            <!-- <div class="text">The Taj Mahal</div> -->
+        </div>
+        
+        <div class="mySlides fade">
+            <img src="/img/sub-img/agra02.jpg" style="width:100%">
+            <!-- <div class="text">Red Fort</div> -->
+        </div>
+        
+        <div class="mySlides fade">
+            <img src="/img/sub-img/agra03.jpg" style="width:100%">
+            <!-- <div class="text">The Taj</div> -->
+        </div>
+        
+
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <br>
+
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <!-- Add more dots for additional slides -->
+    </div>
+    <div class="box">
+        <div class="info">
+            <h3 class="heading">History of The Taj Mahal</h3>
+            <p>Agra, located in the northern state of Uttar Pradesh, India, is steeped in history and is primarily known
+                for the iconic Taj Mahal. Here's a brief historical overview:
+                <br>
+                <br>
+
+                Early History: Agra's history dates back to ancient times, with mentions in the Mahabharata, one of the
+                two major Sanskrit epics of ancient India. It was known as Agravana in the Mahabharata era.
+                <br>
+                <br>
+                Medieval Period: Agra rose to prominence during the medieval period, particularly under the Mughal
+                Empire. In 1526, Babur, the first Mughal emperor, defeated the Sultan of Delhi, Ibrahim Lodi, in the
+                First Battle of Panipat and established the Mughal rule in India. Agra became an important center of
+                governance and culture during the Mughal era.
+                <br>
+                <br>
+                Mughal Architecture: The most famous monument of Agra, the Taj Mahal, was commissioned by the Mughal
+                emperor Shah Jahan in memory of his beloved wife Mumtaz Mahal, who died during childbirth in 1631.
+                Construction of the Taj Mahal began in 1632 and was completed in 1653. It is considered one of the
+                greatest examples of Mughal architecture and is a UNESCO World Heritage Site.
+                <br>
+                <br>
+                Agra Fort: Another notable monument in Agra is the Agra Fort, a UNESCO World Heritage Site, which served
+                as the main residence of the Mughal emperors until 1638 when the capital was shifted to Delhi. It was
+                originally built by Emperor Akbar in 1565 and later renovated and expanded by subsequent Mughal rulers.
+                <br>
+                <br>
+                Later History: Agra continued to be an important city even after the decline of the Mughal Empire. It
+                came under the control of various rulers, including the Marathas and the British, during different
+                periods of history.
+                <br>
+                <br>
+                Modern Times: Today, Agra is a major tourist destination, attracting millions of visitors from around
+                the world to witness its rich history and architectural marvels, particularly the Taj Mahal. It also has
+                several other historical sites, such as the Sikandra Fort, Itmad-ud-Daulah's Tomb, and Fatehpur Sikri,
+                all of which contribute to its historical significance and cultural heritage.
+            </p>
+        </div>
+        <div id="map">
+            <h3 class="heading">Follow through Map</h3>
+
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 ExploreCity. All rights reserved.</p>
+    </footer>
+    <!-- Map container -->
+    <script src="/src/sliding.js"></script>
+
+
+
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-clustering.js"></script>
+    <script>
+        // Initialize communication with the platform
+        const platform = new H.service.Platform({
+            apikey: 'lyoU-AMrYY_Rqji6KKrlOXg3jQ2SblSOD6NZBf-Vb_8'
+        });
+
+        // Default options for the base layers that are used to render a map
+        var defaultLayers = platform.createDefaultLayers();
+
+        // Initialize the map
+        var map = new H.Map(document.getElementById('map'),
+            defaultLayers.vector.normal.map, {
+            zoom: 9,
+            center: { lat: 27.183038, lng: 78.008894 } // Coordinates for Delhi, India
+        }
+        );
+
+        // add a resize listener to make sure that the map occupies the whole container
+        window.addEventListener('resize', () => map.getViewPort().resize());
+
+        // MapEvents enables the event system
+        // Behavior implements default interactions for pan/zoom (also on mobile touch environments)
+        var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+
+        // Create the default UI components
+        var ui = H.ui.UI.createDefault(map, defaultLayers);
+
+        var group = new H.map.Group();
+        map.addObject(group);
+
+        group.addEventListener('tap', function (evt) {
+
+            var bubble = new H.ui.InfoBubble(evt.target.getGeometry(), {
+                content: evt.target.getData()
+            });
+
+            ui.addBubble(bubble);
+        }, false);
+
+        var dehliMarker = new H.map.Marker({
+            lat: 27.183038, lng: 78.008894
+        });
+        dehliMarker.setData("<div><p>Namaskar</p></div>");
+        group.addObject(dehliMarker);
+
+
+
+
+        //prepare a data set which you want to be a part of the cliuster
+        let dataPoints = [
+            new H.clustering.DataPoint(48.18485, 16.31224),
+            new H.clustering.DataPoint(48.20871, 16.37265),
+            new H.clustering.DataPoint(48.20681, 16.36683)
+        ]
+
+        //create a data provider
+        var clusteredDataProvider = new H.clustering.Provider(dataPoints);
+
+        // Create a layer that includes the data provider and its data points: 
+        var layer = new H.map.layer.ObjectLayer(clusteredDataProvider);
+
+        // Add the layer to the map:
+        map.addLayer(layer);
+
+    </script>
+</body>
+
+</html>
